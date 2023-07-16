@@ -14,6 +14,22 @@ export const getAllUser = async (req, res, next) => {
   return res.status(200).json({ users });
 };
 
+export const getUserById = async (req, res, next) => {
+  const userId = req.params.id;
+  let existingUser;
+  try {
+    existingUser = await User.findById(userId);
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!existingUser) {
+    return res.status(404).json({
+      message: "no user Found",
+    });
+  }
+  return res.status(200).json(existingUser);
+};
+
 export const signup = async (req, res, next) => {
   const { name, email, password } = req.body;
 
@@ -59,5 +75,5 @@ export const login = async (req, res, next) => {
   if (!isPasswordCorrect) {
     return res.status(200).json({ message: "Incotrrect password" });
   }
-  return res.status(200).json({ existingUser });
+  return res.status(200).json(existingUser);
 };

@@ -12,7 +12,7 @@ export const getResume = async (req, res, next) => {
 
   if (!resume) {
     return res.status(404).json({
-      message: "no blogs Found",
+      message: "no resume Found",
     });
   }
   return res.status(200).json({ resume });
