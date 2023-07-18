@@ -18,6 +18,22 @@ export const getResume = async (req, res, next) => {
   return res.status(200).json({ resume });
 };
 
+export const getResumeById = async (req, res, next) => {
+  const resumeId = req.params.id;
+  let existingResume;
+  try {
+    existingResume = await Resume.findById(resumeId);
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!existingResume) {
+    return res.status(404).json({
+      message: "no resume Found",
+    });
+  }
+  return res.status(200).json(existingResume);
+};
+
 export const addResume = async (req, res, next) => {
   const {
     personalInfo,
@@ -69,7 +85,7 @@ export const addResume = async (req, res, next) => {
     return res.status(500).json({ message: err });
   }
 
-  return res.status(200).json({ resume });
+  return res.status(200).json(resume);
 };
 
 export const updateResume = async (req, res, next) => {
@@ -106,7 +122,7 @@ export const updateResume = async (req, res, next) => {
   if (!resume) {
     return res.status(200).json({ message: "Unabel to update resume" });
   }
-  return res.status(200).json({ resume });
+  return res.status(200).json(resume);
 };
 
 export const deleteResume = async (req, res, next) => {
