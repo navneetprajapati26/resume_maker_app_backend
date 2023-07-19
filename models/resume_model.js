@@ -121,26 +121,7 @@ const ResumeSchema = new mongoose.Schema({
       },
     },
   ],
-  references: [
-    {
-      name: {
-        type: String,
-        required: true,
-      },
-      title: {
-        type: String,
-        required: true,
-      },
-      company: {
-        type: String,
-        required: true,
-      },
-      contactInfo: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+
   projects: [
     {
       name: {

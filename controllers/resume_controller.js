@@ -43,7 +43,7 @@ export const addResume = async (req, res, next) => {
     skills,
     languages,
     certifications,
-    references,
+  
     projects,
     user,
   } = req.body;
@@ -68,7 +68,7 @@ export const addResume = async (req, res, next) => {
     skills,
     languages,
     certifications,
-    references,
+    
     projects,
     user,
   });
@@ -97,7 +97,7 @@ export const updateResume = async (req, res, next) => {
     skills,
     languages,
     certifications,
-    references,
+   
     projects,
   } = req.body;
 
@@ -112,7 +112,7 @@ export const updateResume = async (req, res, next) => {
       skills,
       languages,
       certifications,
-      references,
+    
       projects,
     });
   } catch (err) {
